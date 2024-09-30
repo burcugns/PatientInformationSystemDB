@@ -1,9 +1,84 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.16">
-  <diagram name="Page-1" id="XIOKp3T5VymaZXUe3JZj">
-    <mxGraphModel>
+  <diagram name="Hospital Management System" id="XIOKp3T5VymaZXUe3JZj">
+    <mxGraphModel dx="1073" dy="716" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        
+        <!-- Patients Table -->
+        <mxCell id="patients" value="Patients" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="140" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="patients_fields" value="patient_id (PK)\nfirst_name\nlast_name\ndate_of_birth\ngender\ncontact_number\naddress\nemail\nemergency_contact\nblood_type" style="whiteSpace=wrap;html=1;" vertex="1" parent="patients">
+          <mxGeometry width="140" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Doctors Table -->
+        <mxCell id="doctors" value="Doctors" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="140" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="doctors_fields" value="doctor_id (PK)\nfirst_name\nlast_name\nspecialization\ncontact_number\nemail\nworking_hours" style="whiteSpace=wrap;html=1;" vertex="1" parent="doctors">
+          <mxGeometry width="140" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Appointments Table -->
+        <mxCell id="appointments" value="Appointments" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="appointments_fields" value="appointment_id (PK)\npatient_id (FK)\ndoctor_id (FK)\nappointment_date\nappointment_status\nremarks" style="whiteSpace=wrap;html=1;" vertex="1" parent="appointments">
+          <mxGeometry width="160" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Medical Records Table -->
+        <mxCell id="medical_records" value="Medical Records" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="100" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="medical_records_fields" value="record_id (PK)\npatient_id (FK)\ndoctor_id (FK)\ndiagnosis\ntreatment\nprescription\nrecord_date" style="whiteSpace=wrap;html=1;" vertex="1" parent="medical_records">
+          <mxGeometry width="180" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Prescriptions Table -->
+        <mxCell id="prescriptions" value="Prescriptions" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="100" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="prescriptions_fields" value="prescription_id (PK)\npatient_id (FK)\ndoctor_id (FK)\nappointment_id (FK)\nmedicine_name\ndosage\nduration\nprescription_date" style="whiteSpace=wrap;html=1;" vertex="1" parent="prescriptions">
+          <mxGeometry width="180" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Departments Table -->
+        <mxCell id="departments" value="Departments" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="departments_fields" value="department_id (PK)\ndepartment_name\nlocation\nhead_of_department" style="whiteSpace=wrap;html=1;" vertex="1" parent="departments">
+          <mxGeometry width="160" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="relationship_patients_appointments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients" target="appointments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_doctors_appointments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="doctors" target="appointments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_patients_medical_records" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients" target="medical_records">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_doctors_medical_records" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="doctors" target="medical_records">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_patients_prescriptions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients" target="prescriptions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_doctors_prescriptions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="doctors" target="prescriptions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_appointments_prescriptions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="appointments" target="prescriptions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relationship_doctors_departments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="doctors" target="departments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>
